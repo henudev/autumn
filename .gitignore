@@ -1,0 +1,35 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### new add ###
+.mvn/
+mvnw
+mvnw.cmd
+logs/
+out/
+tools-db/target
+tools-db/src/main/resources/mapper
+tools-db/src/main/java/com/h3c/bigdata/zhgx/*/entity
+tools-db/src/main/java/com/h3c/bigdata/zhgx/*/dao
