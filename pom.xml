@@ -17,6 +17,8 @@
         <module>data-search</module>
         <module>data-process</module>
         <module>data-api</module>
+        <module>mid-es</module>
+        <module>mid-redis</module>
     </modules>
 
     <properties>
