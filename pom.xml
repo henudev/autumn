@@ -19,6 +19,7 @@
         <module>data-api</module>
         <module>mid-es</module>
         <module>mid-redis</module>
+        <module>base-commons</module>
     </modules>
 
     <properties>
