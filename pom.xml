@@ -13,12 +13,13 @@
         <module>base-auth</module>
         <module>base-gateway</module>
         <module>base-api</module>
-        <module>data-search</module>
-        <module>data-process</module>
         <module>data-api</module>
+        <module>data-core</module>
         <module>mid-es</module>
         <module>mid-redis</module>
         <module>base-commons</module>
+        <module>data-core</module>
+        <module>base-auth/auth-api</module>
     </modules>
 
     <properties>
