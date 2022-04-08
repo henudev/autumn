@@ -10,70 +10,31 @@
 
 ## 系统设计
 
-### 权限方案
+### 模块介绍
+
+1. base-security----认证授权
+2. base-admin----系统基础功能
+3. base-gateway----网关服务
+4. base-commons----通用服务
+5. autumn-data----数据处理子工程
+6. mid-es----ES集成
+7. mid-redis----redis集成
+
+### base-security----认证授权
+
+**授权方案**
 
 OAuth2是一种授权框架，而JWT是一种认证协议。
+SpringCloud OAuth2 是 SpringCloud 体系对OAuth2协议的实现，可以用来做多个微服务的统一认证(验证身份合法性)授权(验证权限)。通过向OAuth2服务 (统一认证授权服务)发送某个类型的grant_type进行集中认证和授权，从而获得 access_token(访问令牌)，而这个token是受其他微服务信任的。
 
-**用户认证:**
+OAuth2颁发Token授权方式：
 
-采用OAuth2认证框架：
+- 授权码
+- 密码
+- 隐藏式
+- 客户端凭证
 
-- 资源拥有者(Resource Owner)
-- 资源服务器(Resource Server)
-- 授权服务器(Authorization Server)
-- 客户端(Client)
+ 流程如下：
 
-OAuth2包含4种授权模式：
+![image-20220407175425812](E:\11111qinzheng\git\henu\autumn\README.assets\image-20220407175425812.png)
 
-- 授权码（认证码）模式 （Authorization code)
-- 简化（隐形）模式 (Impilict
-- 用户名密码模式 (Resource Owner Password Credential)
-- 客户端模式 (Client Credential)
-
-OAuth2的运行流程如下图：
-
-```text
-+--------+                               +---------------+
-|        |--(A)- Authorization Request ->|   Resource    |
-|        |                               |     Owner     |
-|        |<-(B)-- Authorization Grant ---|               |
-|        |                               +---------------+
-|        |
-|        |                               +---------------+
-|        |--(C)-- Authorization Grant -->| Authorization |
-| Client |                               |     Server    |
-|        |<-(D)----- Access Token -------|               |
-|        |                               +---------------+
-|        |
-|        |                               +---------------+
-|        |--(E)----- Access Token ------>|    Resource   |
-|        |                               |     Server    |
-|        |<-(F)--- Protected Resource ---|               |
-+--------+                               +---------------+
-```
-
-**JWT认证协议**
-
-```text
-+-----------+                                     +-------------+
-|           |       1-Request Authorization       |             |
-|           |------------------------------------>|             |
-|           |     grant_type&username&password    |             |--+
-|           |                                     |Authorization|  | 2-Gen
-|           |                                     |Service      |  |   JWT
-|           |       3-Response Authorization      |             |<-+
-|           |<------------------------------------| Private Key |
-|           |    access_token / refresh_token     |             |
-|           |    token_type / expire_in           |             |
-|  Client   |                                     +-------------+
-|           |                                 
-|           |                                     +-------------+
-|           |       4-Request Resource            |             |
-|           |-----------------------------------> |             |
-|           | Authorization: bearer Access Token  |             |--+
-|           |                                     | Resource    |  | 5-Verify
-|           |                                     | Service     |  |  Token
-|           |       6-Response Resource           |             |<-+
-|           |<----------------------------------- | Public Key  |
-+-----------+                                     +-------------+
-```
