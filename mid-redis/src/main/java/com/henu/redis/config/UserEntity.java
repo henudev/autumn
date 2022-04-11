@@ -1,4 +1,4 @@
-package redis.config;
+package com.henu.redis.config;
 
 import java.io.Serializable;
 

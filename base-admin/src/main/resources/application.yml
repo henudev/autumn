@@ -1,0 +1,9 @@
+server:
+  port: 16926
+spring:
+  application:
+    boot:
+      admin:
+        ui:
+          title: Henuqin-Admin
+    name: henuqin-admin

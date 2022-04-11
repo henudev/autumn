@@ -1,5 +1,13 @@
+server:
+  port: 16379
 #redis基础配置
 spring:
+  application:
+    name: henuqin-redis
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:16926
   redis:
     database: 0
     host: 42.192.131.140
@@ -27,3 +35,15 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+#添加开启admin的日志监控
+logging:
+    name: henuqin-redis-admin-client.log

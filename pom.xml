@@ -56,6 +56,19 @@
             <scope>import</scope>
         </dependency>
 
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${springboot.version}</version>
+        </dependency>
+
         <!--  数据库-->
         <dependency>
             <groupId>mysql</groupId>
