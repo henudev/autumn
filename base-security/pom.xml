@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>base-auth</artifactId>
+    <artifactId>base-security</artifactId>
 
     <properties>
     </properties>
