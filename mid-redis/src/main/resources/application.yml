@@ -1,13 +1,9 @@
 server:
-  port: 16379
+  port: 16927
 #redis基础配置
 spring:
   application:
     name: henuqin-redis
-  boot:
-    admin:
-      client:
-        url: http://127.0.0.1:16926
   redis:
     database: 0
     host: 42.192.131.140
@@ -47,4 +43,14 @@ management:
 #添加开启admin的日志监控
 logging:
   file:
-    name: henuqin-redis-admin-client.log
+    name: henuqin-redis.log
+
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:16926/eureka
