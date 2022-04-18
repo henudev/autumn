@@ -23,7 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-
+/logs
 ### new add ###
 .mvn/
 mvnw
