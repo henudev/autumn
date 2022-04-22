@@ -10,13 +10,14 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>base-security</module>
-        <module>base-admin</module>
-        <module>base-gateway</module>
-        <module>base-commons</module>
+        <module>autumn-auth</module>
+        <module>autumn-admin</module>
+        <module>autumn-gateway</module>
+        <module>autumn-common</module>
         <module>autumn-data</module>
-        <module>mid-es</module>
-        <module>mid-redis</module>
+        <module>autumn-mid-es</module>
+        <module>autumn-mid-redis</module>
+        <module>autumn-mid-cache</module>
     </modules>
 
     <properties>
