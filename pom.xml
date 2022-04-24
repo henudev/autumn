@@ -23,6 +23,7 @@
     <properties>
         <spring.cloud-version>Hoxton.SR8</spring.cloud-version>
         <maven.compiler.source>8</maven.compiler.source>
+        <project.build.finalName>autumn</project.build.finalName>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -133,5 +134,4 @@
 
     </dependencies>
     </dependencyManagement>
-
 </project>
