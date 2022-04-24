@@ -16,12 +16,6 @@
 
 
     <dependencies>
-        <!--  通用包-->
-        <dependency>
-            <groupId>com.henu</groupId>
-            <artifactId>base-commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 </project>
