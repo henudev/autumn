@@ -31,14 +31,6 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  endpoint:
-    health:
-      show-details: always
 
 #添加开启admin的日志监控
 logging:
