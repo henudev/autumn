@@ -10,13 +10,6 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true
-
-logging:
-  level:
-    org.springframework.cloud.gateway: debug
-  file:
-    name: henuqin-gateway.log
 
 eureka:
   instance:

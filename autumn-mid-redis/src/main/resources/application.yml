@@ -32,11 +32,6 @@ spring:
         max-idle: 8
         min-idle: 0
 
-#添加开启admin的日志监控
-logging:
-  file:
-    name: henuqin-redis.log
-
 eureka:
   instance:
     ip-address: 127.0.0.1
