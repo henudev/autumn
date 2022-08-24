@@ -14,9 +14,9 @@
         <module>autumn-admin</module>
         <module>autumn-gateway</module>
         <module>autumn-common</module>
+        <module>autumn-core</module>
         <module>autumn-data</module>
         <module>autumn-mid-es</module>
-        <module>autumn-mid-redis</module>
         <module>autumn-mid-cache</module>
     </modules>
 

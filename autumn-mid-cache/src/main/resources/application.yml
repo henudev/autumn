@@ -3,7 +3,7 @@ server:
 #redis基础配置
 spring:
   application:
-    name: henuqin-redis
+    name: henuqin-cache
   redis:
     database: 0
     host: 42.192.131.140
