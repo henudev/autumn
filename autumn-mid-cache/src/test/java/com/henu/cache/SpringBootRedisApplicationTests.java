@@ -1,6 +1,6 @@
-package com.henu.redis;
+package com.henu.cache;
 
-import com.henu.redis.config.UserEntity;
+import com.henu.cache.config.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

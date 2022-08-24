@@ -1,4 +1,4 @@
-package com.henu.redis.config;
+package com.henu.cache.config;
 
 import java.io.Serializable;
 
