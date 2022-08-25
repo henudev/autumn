@@ -10,7 +10,7 @@ import org.springframework.core.serializer.support.DeserializingConverter;
 import org.springframework.core.serializer.support.SerializingConverter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.*;
 
 import java.io.Serializable;
@@ -32,8 +32,8 @@ public class LettuceRedisConfig implements RedisSerializer<Object> {
     }
 
     @Bean
-    public RedisTemplate<String, Serializable> redisTemplate(){
-        RedisTemplate<String, Serializable> redisTemplate = new RedisTemplate<>();
+    public RedisTemplate<String, Object> redisTemplate(){
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         initDomainRedisTemplate(redisTemplate, lettuceConnectionFactory);
         log.debug("-------------RedisTemplate init Done-------------");
         return redisTemplate;
@@ -44,7 +44,7 @@ public class LettuceRedisConfig implements RedisSerializer<Object> {
      * @param redisTemplate redisTemplate
      * @param factory 连接池
      */
-    private void initDomainRedisTemplate(RedisTemplate<String, Serializable> redisTemplate, RedisConnectionFactory factory) {
+    private void initDomainRedisTemplate(RedisTemplate<String, Object> redisTemplate, RedisConnectionFactory factory) {
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
@@ -52,26 +52,48 @@ public class LettuceRedisConfig implements RedisSerializer<Object> {
         redisTemplate.setConnectionFactory(factory);
     }
 
+    @Bean
+    public HashOperations<String, String, Object> hashOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForHash();
+    }
+    @Bean
+    public ValueOperations<String, Object> valueOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForValue();
+    }
+    @Bean
+    public ListOperations<String, Object> listOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForList();
+    }
+    @Bean
+    public SetOperations<String, Object> setOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForSet();
+    }
+    @Bean
+    public ZSetOperations<String, Object> zSetOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForZSet();
+    }
 
     @Override
-    public byte[] serialize(Object o) throws SerializationException {
-        return new byte[0];
+    public byte[] serialize(Object object) throws SerializationException {
+        if(object == null){
+            return EMPTY_ARRAY;
+        }
+        try {
+            return serializer.convert(object);
+        } catch (Exception ex) {
+            return EMPTY_ARRAY;
+        }
     }
 
     @Override
     public Object deserialize(byte[] bytes) throws SerializationException {
-        return null;
+        if (bytes == null || bytes.length == 0) {
+            return null;
+        }
+        try {
+            return deserializer.convert(bytes);
+        } catch (Exception ex) {
+            throw new SerializationException("Cannot deserialize", ex);
+        }
     }
-
-    @Override
-    public boolean canSerialize(Class<?> type) {
-        return RedisSerializer.super.canSerialize(type);
-    }
-
-    @Override
-    public Class<?> getTargetType() {
-        return RedisSerializer.super.getTargetType();
-    }
-
-
 }

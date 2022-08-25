@@ -1,6 +1,5 @@
 package com.henu.cache;
 
-import com.henu.cache.config.UserEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +26,5 @@ public class SpringBootRedisApplicationTests {
 
     @Test
     public void testSerializable() {
-        UserEntity user=new UserEntity();
-        user.setId(1L);
-        user.setUserName("朝雾轻寒");
-        user.setUserSex("男");
-        serializableRedisTemplate.opsForValue().set("user", user);
-        UserEntity user2 = (UserEntity) serializableRedisTemplate.opsForValue().get("user");
-        System.out.println("user:"+user2.getId()+","+user2.getUserName()+","+user2.getUserSex());
     }
 }
