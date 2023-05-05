@@ -6,7 +6,7 @@ spring:
     name: henuqin-cache
   redis:
     database: 0
-    host: 42.192.131.140
+    host: 127.0.0.1
     port: 7963
     password:
     timeout: 3000
